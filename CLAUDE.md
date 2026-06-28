@@ -22,11 +22,11 @@ npm run lint     # ESLint 검사
 
 ### Supabase 클라이언트 3종
 
-| 파일 | 용도 |
-|---|---|
-| `lib/supabase/client.ts` | 클라이언트 컴포넌트 (`'use client'`) |
-| `lib/supabase/server.ts` | 서버 컴포넌트·Route Handler (쿠키 기반) |
-| `lib/supabase/proxy.ts` | 미들웨어 역할 — 모든 요청의 세션 갱신 및 접근 제어 |
+| 파일                     | 용도                                               |
+| ------------------------ | -------------------------------------------------- |
+| `lib/supabase/client.ts` | 클라이언트 컴포넌트 (`'use client'`)               |
+| `lib/supabase/server.ts` | 서버 컴포넌트·Route Handler (쿠키 기반)            |
+| `lib/supabase/proxy.ts`  | 미들웨어 역할 — 모든 요청의 세션 갱신 및 접근 제어 |
 
 `proxy.ts`는 middleware.ts 대신 사용하는 패턴이며, 요청마다 새 클라이언트를 생성한다 (Fluid compute 환경 대응).
 

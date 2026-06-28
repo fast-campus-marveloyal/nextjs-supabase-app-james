@@ -15,13 +15,13 @@
 
 **Settings → Environment Variables**에서 아래 5개 환경변수를 추가합니다.
 
-| 변수명 | 설명 | 예시 |
-|--------|------|------|
-| `NOTION_API_KEY` | Notion Integration 시크릿 키 | `secret_xxxxxx` |
-| `NOTION_DATABASE_ID` | 견적서 데이터베이스 Notion ID | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` |
-| `ADMIN_PASSWORD` | 관리자 로그인 비밀번호 | 충분히 복잡한 문자열 사용 |
-| `SESSION_SECRET` | JWT 서명용 시크릿 (최소 32자) | `openssl rand -base64 32`로 생성 |
-| `NEXT_PUBLIC_BASE_URL` | 배포된 프로덕션 도메인 URL | `https://your-app.vercel.app` |
+| 변수명                 | 설명                          | 예시                                   |
+| ---------------------- | ----------------------------- | -------------------------------------- |
+| `NOTION_API_KEY`       | Notion Integration 시크릿 키  | `secret_xxxxxx`                        |
+| `NOTION_DATABASE_ID`   | 견적서 데이터베이스 Notion ID | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` |
+| `ADMIN_PASSWORD`       | 관리자 로그인 비밀번호        | 충분히 복잡한 문자열 사용              |
+| `SESSION_SECRET`       | JWT 서명용 시크릿 (최소 32자) | `openssl rand -base64 32`로 생성       |
+| `NEXT_PUBLIC_BASE_URL` | 배포된 프로덕션 도메인 URL    | `https://your-app.vercel.app`          |
 
 > `SESSION_SECRET`은 반드시 32자 이상의 무작위 문자열을 사용합니다. `openssl rand -base64 32` 명령어로 생성할 수 있습니다.
 
