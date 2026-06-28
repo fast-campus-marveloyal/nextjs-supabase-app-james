@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+*.log
+.env
+.env.local
+package-lock.json
+next-env.d.ts
+.claude/
+shrimp_data/
