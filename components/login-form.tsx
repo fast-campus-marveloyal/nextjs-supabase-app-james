@@ -15,6 +15,8 @@ import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { AuthDivider } from '@/components/auth-divider'
+import { SocialLoginButton } from '@/components/social-login-button'
 
 export function LoginForm({
   className,
@@ -92,6 +94,8 @@ export function LoginForm({
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? 'Logging in...' : 'Login'}
               </Button>
+              <AuthDivider />
+              <SocialLoginButton provider="google" next="/protected" />
             </div>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{' '}
