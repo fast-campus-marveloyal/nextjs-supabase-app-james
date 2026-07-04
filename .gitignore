@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# shrimp-task-manager runtime data (자체 .git 포함, 로컬 전용)
+/shrimp_data/
