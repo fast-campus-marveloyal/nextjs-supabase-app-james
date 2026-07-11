@@ -14,6 +14,126 @@ export type Database = {
   }
   public: {
     Tables: {
+      events: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          event_date: string
+          id: string
+          location: string | null
+          organizer_id: string
+          share_slug: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          event_date: string
+          id?: string
+          location?: string | null
+          organizer_id: string
+          share_slug: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          event_date?: string
+          id?: string
+          location?: string | null
+          organizer_id?: string
+          share_slug?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'events_organizer_id_fkey'
+            columns: ['organizer_id']
+            isOneToOne: false
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      notices: {
+        Row: {
+          content: string
+          created_at: string
+          event_id: string
+          id: string
+          pinned: boolean
+          title: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          event_id: string
+          id?: string
+          pinned?: boolean
+          title: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          event_id?: string
+          id?: string
+          pinned?: boolean
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'notices_event_id_fkey'
+            columns: ['event_id']
+            isOneToOne: false
+            referencedRelation: 'events'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      participants: {
+        Row: {
+          contact: string | null
+          created_at: string
+          event_id: string
+          id: string
+          name: string
+          rsvp_status: string
+        }
+        Insert: {
+          contact?: string | null
+          created_at?: string
+          event_id: string
+          id?: string
+          name: string
+          rsvp_status?: string
+        }
+        Update: {
+          contact?: string | null
+          created_at?: string
+          event_id?: string
+          id?: string
+          name?: string
+          rsvp_status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'participants_event_id_fkey'
+            columns: ['event_id']
+            isOneToOne: false
+            referencedRelation: 'events'
+            referencedColumns: ['id']
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null

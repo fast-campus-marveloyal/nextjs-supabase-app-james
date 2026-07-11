@@ -8,11 +8,11 @@ export function SettlementTab({
   participants,
 }: {
   settlements: Settlement[]
-  participants: Participant[]
+  participants: Pick<Participant, 'id' | 'name'>[]
 }) {
   if (settlements.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         등록된 정산 항목이 없습니다.
       </p>
     )

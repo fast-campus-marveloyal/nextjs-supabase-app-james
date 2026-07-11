@@ -67,68 +67,68 @@
 
 #### 1-A. 이벤트 관리
 
-- [ ] **Task 004: `events` 테이블 마이그레이션 및 RLS + 타입 재생성** — 우선순위
+- [x] **Task 004: `events` 테이블 마이그레이션 및 RLS + 타입 재생성** — 우선순위
   - PRD §5 `events` 스키마 마이그레이션 작성 (category check: 수영/헬스/모임/기타, status: recruiting/closed/ended, share_slug unique)
   - RLS: `organizer_id = auth.uid()` 기준 CRUD 정책
   - Supabase MCP `generate_typescript_types` → `types/database.types.ts` 갱신
   - `## 테스트 체크리스트` 포함 (RLS 격리 검증)
 
-- [ ] **Task 005: `/protected/events/new` 이벤트 생성 폼 구현**
+- [x] **Task 005: `/protected/events/new` 이벤트 생성 폼 구현**
   - 제목/카테고리/일시/장소/설명 입력 폼 (Server Action 또는 Route Handler)
   - `share_slug` 자동 생성, 생성 후 `/protected/events/[eventId]` 리다이렉트
   - 폼 검증(필수값, 일시 형식)
   - `## 테스트 체크리스트` 포함
 
-- [ ] **Task 006: `/protected/dashboard` 이벤트 목록 + 카테고리 필터**
+- [x] **Task 006: `/protected/dashboard` 이벤트 목록 + 카테고리 필터**
   - 로그인 주최자의 이벤트 목록 조회 (Server Component)
   - 카테고리별 필터, 상태 배지 표시
   - 빈 상태(첫 이벤트 생성 유도) 처리
 
-- [ ] **Task 007: `/protected/events/[eventId]` 개요 탭 + 이벤트 수정/삭제 + 상태 변경**
+- [x] **Task 007: `/protected/events/[eventId]` 개요 탭 + 이벤트 수정/삭제 + 상태 변경**
   - 개요 탭: 이벤트 정보 표시, 공유 링크(`/e/[shareSlug]`) 복사 버튼
   - 이벤트 수정 폼, 삭제(cascade 확인), 상태 전환(모집중/마감/종료)
   - `## 테스트 체크리스트` 포함
 
 #### 1-B. 공지 관리
 
-- [ ] **Task 008: `notices` 테이블 마이그레이션 및 RLS + 타입 재생성**
+- [x] **Task 008: `notices` 테이블 마이그레이션 및 RLS + 타입 재생성**
   - PRD §5 `notices` 스키마 (event_id FK, pinned)
   - RLS: 이벤트 organizer 조인 경유 CRUD
   - 타입 재생성
   - `## 테스트 체크리스트` 포함
 
-- [ ] **Task 009: 공지 탭 CRUD + 상단 고정(pinned)**
+- [x] **Task 009: 공지 탭 CRUD + 상단 고정(pinned)**
   - 공지 작성/수정/삭제 (제목·본문)
   - pinned 토글, pinned 우선 + 시간순 정렬
   - `## 테스트 체크리스트` 포함
 
 #### 1-C. 참여자 관리
 
-- [ ] **Task 010: `participants` 테이블 마이그레이션 및 RLS + 타입 재생성**
+- [x] **Task 010: `participants` 테이블 마이그레이션 및 RLS + 타입 재생성**
   - PRD §5 `participants` 스키마 (name, contact, rsvp_status: pending/confirmed/declined)
   - RLS: 이벤트 organizer 조인 경유 CRUD
   - 타입 재생성
   - `## 테스트 체크리스트` 포함
 
-- [ ] **Task 011: 참여자 탭 등록/인라인 수정/삭제 + 상태 관리**
+- [x] **Task 011: 참여자 탭 등록/인라인 수정/삭제 + 상태 관리**
   - 주최자 직접 등록(이름·연락처·참여 상태) — 셀프 등록 없음
   - 목록 테이블 인라인 상태 수정/삭제
   - `## 테스트 체크리스트` 포함
 
 #### 1-D. 공유 링크 공개 조회
 
-- [ ] **Task 012: 공개 조회 Route Handler (Service Role) — 이벤트/공지/참여자**
+- [x] **Task 012: 공개 조회 Route Handler (Service Role) — 이벤트/공지/참여자**
   - `app/api/public/events/[shareSlug]/route.ts`: slug로 이벤트+공지+참여자 조회 (Service Role, RLS 우회)
   - 참여자 명단은 이름·참여 상태만 반환, **연락처 비노출**
   - 존재하지 않는 slug 처리(404)
   - `## 테스트 체크리스트` 포함 (연락처 미노출 검증 필수)
 
-- [ ] **Task 013: `/e/[shareSlug]` 공개 페이지 — 개요·공지·명단 (읽기 전용)**
+- [x] **Task 013: `/e/[shareSlug]` 공개 페이지 — 개요·공지·명단 (읽기 전용)**
   - 이벤트 개요 + 공지 목록(시간순) + 참여자 명단(읽기 전용)
   - 비로그인 접근 가능 확인(proxy 미들웨어 매처에서 `/e/*` 제외 검증)
   - `## 테스트 체크리스트` 포함 (비로그인 접근 E2E)
 
-- [ ] **Task 013-1: Phase 1 통합 테스트 (Happy Path 전체)**
+- [x] **Task 013-1: Phase 1 통합 테스트 (Happy Path 전체)**
   - 이벤트 생성 → 공지 작성 → 참여자 등록 → 공유 링크 조회까지 전체 사용자 플로우 E2E
   - 주최자/비로그인 참여자 관점 각각 검증
   - 에러/엣지(빈 이벤트, 삭제된 이벤트 slug 접근) 케이스

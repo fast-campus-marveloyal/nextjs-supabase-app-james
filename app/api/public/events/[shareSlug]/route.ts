@@ -1,6 +1,16 @@
 import { NextResponse } from 'next/server'
+import { getPublicEventBySlug } from '@/lib/queries/public-event'
 
-// Phase 0 placeholder — Service Role 기반 실제 조회 로직은 Task 012에서 구현
-export async function GET() {
-  return NextResponse.json({ todo: true }, { status: 501 })
+export async function GET(
+  _request: Request,
+  { params }: { params: Promise<{ shareSlug: string }> }
+) {
+  const { shareSlug } = await params
+  const data = await getPublicEventBySlug(shareSlug)
+
+  if (!data) {
+    return NextResponse.json({ error: 'Not Found' }, { status: 404 })
+  }
+
+  return NextResponse.json(data)
 }
