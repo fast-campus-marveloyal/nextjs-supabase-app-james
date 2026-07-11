@@ -43,19 +43,20 @@
 
 전체 라우트/타입/공통 컴포넌트 골격을 먼저 세워 Phase 1~3이 병렬 개발 가능하도록 준비.
 
-- [ ] **Task 001: 전체 라우트 골격 및 빈 페이지 생성** — 우선순위
+- [x] **Task 001: 전체 라우트 골격 및 빈 페이지 생성** — 우선순위
   - `app/protected/dashboard/page.tsx` (내 이벤트 목록) 빈 껍데기
   - `app/protected/events/new/page.tsx` (이벤트 생성 폼) 빈 껍데기
   - `app/protected/events/[eventId]/page.tsx` + 탭 구조(개요/공지/참여자/카풀/정산) 골격
   - `app/e/[shareSlug]/page.tsx` (참여자 공개 조회) 빈 껍데기
   - `app/api/public/**` Route Handler 디렉토리 골격 (공개 조회·탑승 신청용)
+  - `lib/supabase/proxy.ts`에 `/e`, `/api/public` 비로그인 예외 추가 (실사 중 발견한 결함 수정)
 
-- [ ] **Task 002: 도메인 타입 정의 및 공유 유틸 골격**
+- [x] **Task 002: 도메인 타입 정의 및 공유 유틸 골격**
   - PRD §5 7개 테이블 기준 TypeScript 인터페이스 초안(`types/domain.ts` 또는 database.types 재생성 전 임시 타입)
   - `share_slug` 생성 유틸(nanoid) 및 Service Role 클라이언트 헬퍼(`lib/supabase/service.ts`) 골격
   - 카테고리/상태/참여상태 등 enum 상수(`lib/constants/event.ts`)
 
-- [ ] **Task 003: 공통 UI 컴포넌트 및 더미 데이터 준비**
+- [x] **Task 003: 공통 UI 컴포넌트 및 더미 데이터 준비**
   - shadcn/ui 기반 공통 컴포넌트 확인/추가(Table, Tabs, Dialog, Badge, Checkbox 등)
   - 이벤트/공지/참여자/카풀/정산 더미 데이터 픽스처(`lib/dummy/*.ts`)
   - Phase 1~3 UI가 더미 데이터로 먼저 렌더링되도록 구성

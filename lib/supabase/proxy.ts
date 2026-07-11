@@ -51,7 +51,10 @@ export async function updateSession(request: NextRequest) {
     request.nextUrl.pathname !== '/' &&
     !user &&
     !request.nextUrl.pathname.startsWith('/login') &&
-    !request.nextUrl.pathname.startsWith('/auth')
+    !request.nextUrl.pathname.startsWith('/auth') &&
+    // 참여자 공개 조회(/e/*)·공개 API(/api/public/*)는 비로그인 접근 허용 (docs/PRD.md §2)
+    !request.nextUrl.pathname.startsWith('/e') &&
+    !request.nextUrl.pathname.startsWith('/api/public')
   ) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone()
